@@ -4,6 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/E:/Documents/Carlos%20-%20Projetos/carlos-helpdesk/resources/views/welcome.blade.php</file>
+            <file>file:/E:/Documents/Carlos%20-%20Projetos/carlos-helpdesk/database/migrations/2014_10_12_000000_create_users_table.php</file>
+            <file>file:/E:/Documents/Carlos%20-%20Projetos/carlos-helpdesk/app/Solicitante.php</file>
+            <file>file:/E:/Documents/Carlos%20-%20Projetos/carlos-helpdesk/routes/web.php</file>
         </group>
     </open-files>
 </project-private>
