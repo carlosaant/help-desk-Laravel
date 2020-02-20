@@ -16,7 +16,7 @@ class SolicitanteController extends Controller
     {
         //
         return view('solicitante.lista')
-                ->with('solicitante', Solicitante::all());
+                ->with('solicitantes', Solicitante::all());
     }
 
     /**
