@@ -20,6 +20,7 @@ class CreateSolicitanteTable extends Migration
             $table->string('telefone', '20')->nullable();
             $table->string('observacao', '255')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
