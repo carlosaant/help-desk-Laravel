@@ -13,7 +13,7 @@ class CreateSolicitanteTable extends Migration
      */
     public function up()
     {
-        Schema::create('solicitante', function (Blueprint $table) {
+        Schema::create('solicitantes', function (Blueprint $table) {
            // $table->bigIncrements('id');
             $table->string('email', '70')->unique();
             $table->string('nome', '70');

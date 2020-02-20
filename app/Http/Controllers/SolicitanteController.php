@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Solicitante;
+use App\Http\Requests\SolicitanteRequest;
 use Illuminate\Http\Request;
 
 class SolicitanteController extends Controller
@@ -15,8 +16,14 @@ class SolicitanteController extends Controller
     public function index()
     {
         //
+//        $sol = new Solicitante();
+//        $sol->email = "carlos@carlos.com";
+//        $sol->nome = "Carlos teste";
+//        $sol->telefone = "1234567";
+//        $sol->save();
+        
         return view('solicitante.lista')
-                ->with('solicitantes', Solicitante::all());
+                ->with('solicitantes', Solicitante::orderBy('nome')->get());
     }
 
     /**
@@ -27,7 +34,7 @@ class SolicitanteController extends Controller
     public function create()
     {
        return view('solicitante.form')
-               ->with('solicitante', new Solicitante());
+               ->with('solicitantes', new Solicitante());
     }
 
     /**
@@ -36,9 +43,18 @@ class SolicitanteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SolicitanteRequest $request)
     {
-        //
+        $validos = $request->validated();
+        
+        $solicitante = new Solicitante();
+        $solicitante->email = $validos['email'];
+        $solicitante->nome = $validos['nome'];
+        $solicitante->telefone = $validos['telefone'];
+        $solicitante->observacao = $validos['observacao'];
+        
+        $solicitante->save();
+        return redirect()->route('solicitante.index');
     }
 
     /**
@@ -84,5 +100,8 @@ class SolicitanteController extends Controller
     public function destroy(Solicitante $solicitante)
     {
         //
+        $solicitante->delete();
+        
+        return redirect()->route('solicitante.index');
     }
 }

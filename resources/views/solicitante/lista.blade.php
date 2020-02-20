@@ -1,10 +1,10 @@
 @extends('layouts.crud')
 
-@section('titulo', 'Cadastro de Cidades')
+@section('titulo', 'Listagem de Solicitantes')
 
 @section('corpo')
 @if(empty($solicitantes))
-<h1>Nenhum registro cadastrado.</h1>
+    <h1>Nenhum registro cadastrado.</h1>
 @else
 <form method="post" action="" >
     @csrf 
@@ -12,29 +12,25 @@
     <table class="table table-sm table-striped">
         <thead>
             <tr>
-                <th>Código</th>
+                <th>Email</th>
                 <th>Nome</th>
-                <th>Estado</th>
-                <th>-Ação</th>
+                <th>Telefone</th>
+                <th>Ação</th>
             </tr>
         </thead>
         <tfoot>
-            <tr>
-                <td colspan="4">
-                    {{$solicitantes->links()}}
-                </td>
-            </tr>
+       
         </tfoot>
         <tbody>
             @foreach($solicitantes as $solicitante)
             <tr>
                 <td>{{ $solicitante->email }}</td>
-                <td>{{ solicitante->nome }}</td>
-                <td>test</td>
+                <td>{{ $solicitante->nome }}</td>
+                <td>{{ $solicitante->telefone }}</td>
                 <td>
-                    <a href="" title="Editar" class="btn btn-primary">Editar</a>
-                    <input type="submit" name="Excluir" class="btn btn-danger" value="Excluir" 
-                           formaction=""/>
+                    <a href="" title="Editar Solicitante" class="btn btn-primary">Editar</a>
+                    <input type="submit" name="Excluir Solicitante" class="btn btn-danger" value="Excluir" 
+                           formaction="{{route('solicitante.destroy', $solicitante)}}"/>
                 </td>
             </tr>
         </tbody>
@@ -42,5 +38,5 @@
     </table>
 </form>
 @endif
-<a href="" title="Novo estado" class="btn btn-primary">Novo</a>
+<a href="{{ route('solicitante.create')}}" title="Novo Solicitante" class="btn btn-primary">Novo</a>
 @endsection

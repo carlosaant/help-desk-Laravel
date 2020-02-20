@@ -25,7 +25,10 @@ class SolicitanteRequest extends FormRequest
     {
         return [
             //
-            'nome' => 'bail|required|min:3|max:150'
+            'email' => 'required|unique:solicitantes,email',
+            'nome' => 'bail|required|min:3|max:150',
+            'telefone' => 'bail',
+            'observacao' => 'bail'
         ];
     }
 }
